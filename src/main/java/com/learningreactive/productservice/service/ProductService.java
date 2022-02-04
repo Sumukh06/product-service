@@ -1,7 +1,6 @@
 package com.learningreactive.productservice.service;
 
 import com.learningreactive.productservice.domain.ProductDomain;
-import com.learningreactive.productservice.entity.Product;
 import com.learningreactive.productservice.repository.ProductRepository;
 import com.learningreactive.productservice.util.EntityDomainUtil;
 import org.springframework.beans.factory.annotation.Autowired;

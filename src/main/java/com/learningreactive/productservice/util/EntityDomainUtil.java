@@ -2,7 +2,9 @@ package com.learningreactive.productservice.util;
 
 import com.learningreactive.productservice.domain.ProductDomain;
 import com.learningreactive.productservice.entity.Product;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EntityDomainUtil {
     public static ProductDomain toDomain(Product product){
         ProductDomain domain=new ProductDomain();
