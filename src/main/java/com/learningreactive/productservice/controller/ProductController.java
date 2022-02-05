@@ -2,6 +2,7 @@ package com.learningreactive.productservice.controller;
 
 import com.learningreactive.productservice.domain.ProductDomain;
 import com.learningreactive.productservice.service.ProductService;
+import com.learningreactive.productservice.util.EntityDomainUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,13 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public Mono<Void> delete(@PathVariable String id){
         return productService.deleteProduct(id);
+    }
+    @GetMapping("/price-range")
+    public Flux<ProductDomain> priceRange(@RequestParam("min")Integer min,
+                                          @RequestParam("max")Integer max){
+        return productService.getAllProducts()
+                .filter(domain -> domain.getPrice()>=min && domain.getPrice()<=max)
+                .map(EntityDomainUtil::toEntity)
+                .map(EntityDomainUtil::toDomain);
     }
 }
